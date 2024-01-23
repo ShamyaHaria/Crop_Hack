@@ -25,11 +25,13 @@
 
         .online-status {
             position: absolute;
-            top: 20px;
+            top: 50%;
             right: 20px;
+            transform: translateY(-50%);
             display: flex;
             align-items: center;
             color: #4CAF50;
+            z-index: 1;
         }
 
         .dot {
@@ -66,19 +68,13 @@
             padding: 10px;
         }
 
-        .chat-box {
-            flex: 1;
-            overflow-y: scroll;
-            border: 1px solid #ccc;
-            padding: 10px;
-        }
-
         .request-appointment {
             padding: 10px;
             background-color: #fff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 5px;
             margin-bottom: 10px;
+            z-index: 0;
         }
 
         .appointment-button {
@@ -88,9 +84,18 @@
             cursor: pointer;
         }
 
+        .chat-box {
+            flex: 1;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 0;
+        }
+
         .chat-input {
             display: flex;
             margin-bottom: 10px;
+            z-index: 0;
         }
 
         input[type="text"] {
@@ -112,11 +117,11 @@
 <body>
 
     <header>
-        <h2>Expert Page</h2>
         <div class="online-status">
             <div class="dot"></div>
             Expert is online
         </div>
+        <h2>Expert name</h2>
     </header>
 
     <nav>
@@ -132,7 +137,6 @@
         </div>
 
         <div class="chat-box">
-            <!-- Display chat messages here -->
         </div>
 
         <div class="chat-input">

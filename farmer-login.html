@@ -43,7 +43,7 @@
 
     <h2>Farmer Login</h2>
 
-    <form action="farmer-portal.html" method="post">
+    <form action="javascript:void(0);" onsubmit="redirectToFarmerPortal()">
         <label for="mobileNumber">Mobile Number:</label>
         <input type="text" id="mobileNumber" name="mobileNumber" required>
 
@@ -52,7 +52,14 @@
 
         <input type="submit" value="Login">
     </form>
-    <p>Don't have an account? <a href="/farmer-portal.html">Sign up here</a>.</p>
+    <p>Don't have an account? <a href="/farmer-signup.html">Sign up here</a>.</p>
+
+    <script>
+        function redirectToFarmerPortal() {
+            window.location.href = "farmer-portal.html";
+            return false;
+        }
+    </script>
 
 </body>
 </html>
