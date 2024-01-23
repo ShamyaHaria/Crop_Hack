@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -113,7 +114,28 @@
             margin-left: 10px;
         }
     </style>
+    <script>
+        // Function to toggle online/offline status
+        function toggleOnlineStatus(online) {
+            var dotElement = document.getElementById('online-dot');
+            var statusTextElement = document.querySelector('.online-status');
+
+            if (online) {
+                dotElement.style.backgroundColor = '#4CAF50';
+                statusTextElement.textContent = 'Expert is online';
+                statusTextElement.classList.remove('offline');
+            } else {
+                dotElement.style.backgroundColor = '#ccc'; // Change to offline color
+                statusTextElement.textContent = 'Expert is offline';
+                statusTextElement.classList.add('offline');
+            }
+        }
+
+        // Call this function to set the initial online status (you can modify this based on your requirements)
+        toggleOnlineStatus(true);
+    </script>
 </head>
+
 <body>
 
     <header>
@@ -146,4 +168,5 @@
     </section>
 
 </body>
+
 </html>
