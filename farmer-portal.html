@@ -70,6 +70,20 @@
                 transform: translateX(-100%);
             }
         }
+
+        /* Online Status Indicator */
+        .status-indicator {
+            width: 10px;
+            height: 10px;
+            background-color: red; /* Default color for offline */
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .online {
+            background-color: green;
+        }
     </style>
 </head>
 <body>
@@ -85,9 +99,14 @@
         <a href="learning-page.html">Learning</a>
         <a href="store-page.html">Store</a>
     </nav>
+
     <section>
         <h2>Welcome to your Farmer Portal, Farmer Name!</h2>
         <p>This is the home page for farmers. You can access various sections using the navigation above.</p>
+
+        <!-- Online Status Indicator -->
+        <span class="status-indicator" id="onlineIndicator"></span>
+        <span id="statusText">Offline</span>
     </section>
 
     <!-- News Bar -->
@@ -111,6 +130,7 @@
         <canvas id="pieChart" width="400" height="200"></canvas>
     </section>
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         // Dummy data for the charts (replace with your actual data)
         var barChartData1 = {
@@ -145,6 +165,27 @@
             }]
         };
 
+        // Online status indicator logic
+        var onlineIndicator = document.getElementById('onlineIndicator');
+        var statusText = document.getElementById('statusText');
+
+        function updateOnlineStatus(status) {
+            if (status) {
+                onlineIndicator.classList.add('online');
+                statusText.textContent = 'Online';
+            } else {
+                onlineIndicator.classList.remove('online');
+                statusText.textContent = 'Offline';
+            }
+        }
+
+        // Simulate online status changes (replace with actual logic)
+        setInterval(function () {
+            var isOnline = Math.random() < 0.8; // Simulating 80% chance of being online
+            updateOnlineStatus(isOnline);
+        }, 5000); // Update status every 5 seconds
+
+        // Initialize and render charts
         var ctx1 = document.getElementById('barChart1').getContext('2d');
         new Chart(ctx1, {
             type: 'bar',
