@@ -48,6 +48,28 @@
         section {
             padding: 20px;
         }
+
+        /* News Bar Styles */
+        .news-bar {
+            overflow: hidden;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .news-content {
+            display: inline-block;
+            white-space: nowrap;
+            animation: marquee 15s linear infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(100%);
+            }
+            to {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 <body>
@@ -63,11 +85,83 @@
         <a href="learning-page.html">Learning</a>
         <a href="store-page.html">Store</a>
     </nav>
-
     <section>
         <h2>Welcome to your Farmer Portal, Farmer Name!</h2>
         <p>This is the home page for farmers. You can access various sections using the navigation above.</p>
     </section>
 
+    <!-- News Bar -->
+    <div class="news-bar">
+        <div class="news-content">
+            Latest News: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur euismod ante vel porta volutpat.
+        </div>
+    </div>
+
+    <!-- Statistical Graphs and Charts -->
+    <section>
+        <h2>Statistical Graphs and Charts</h2>
+
+        <!-- Bar Chart 1: Example -->
+        <canvas id="barChart1" width="400" height="200"></canvas>
+
+        <!-- Bar Chart 2: Example -->
+        <canvas id="barChart2" width="400" height="200"></canvas>
+
+        <!-- Pie Chart: Example -->
+        <canvas id="pieChart" width="400" height="200"></canvas>
+    </section>
+
+    <script>
+        // Dummy data for the charts (replace with your actual data)
+        var barChartData1 = {
+            labels: ['Category A', 'Category B', 'Category C'],
+            datasets: [{
+                label: 'Bar Chart 1',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                data: [30, 50, 20]
+            }]
+        };
+
+        var barChartData2 = {
+            labels: ['January', 'February', 'March'],
+            datasets: [{
+                label: 'Bar Chart 2',
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1,
+                data: [40, 20, 30]
+            }]
+        };
+
+        var pieChartData = {
+            labels: ['Label 1', 'Label 2', 'Label 3'],
+            datasets: [{
+                data: [25, 40, 35],
+                backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(255, 206, 86, 0.2)'],
+                borderColor: ['rgba(255,99,132,1)', 'rgba(54, 162, 235, 1)', 'rgba(255, 206, 86, 1)'],
+                borderWidth: 1
+            }]
+        };
+
+        var ctx1 = document.getElementById('barChart1').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: barChartData1
+        });
+
+        var ctx2 = document.getElementById('barChart2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'bar',
+            data: barChartData2
+        });
+
+        var ctx3 = document.getElementById('pieChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'pie',
+            data: pieChartData
+        });
+    </script>
 </body>
 </html>
